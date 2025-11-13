@@ -14,6 +14,20 @@ async function fetchUser() {
     }
 }
 
+// Fetch famous quote
+async function fetchQuote() {
+    try {
+        const response = await fetch('/api/quote');
+        const quote = await response.json();
+        document.getElementById('quote-text').textContent = `"${quote.text}"`;
+        document.getElementById('quote-author').textContent = `— ${quote.author}`;
+    } catch (error) {
+        console.error('Error fetching quote:', error);
+        document.getElementById('quote-text').textContent = 'Error loading quote';
+        document.getElementById('quote-author').textContent = '';
+    }
+}
+
 // Fetch words from API
 async function fetchWords() {
     try {
@@ -129,6 +143,7 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Load user info and words on page load
+// Load user info, words, and quote on page load
 fetchUser();
 fetchWords();
+fetchQuote();

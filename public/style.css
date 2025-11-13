@@ -276,8 +276,55 @@ h1 {
     color: #f44336;
 }
 
+/* Famous Quotes card styles */
+.quote-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+#quote-text {
+    font-size: 1.3rem;
+    color: #333;
+    font-style: italic;
+    line-height: 1.8;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    position: relative;
+}
+
+#quote-text::before {
+    content: '"';
+    font-size: 4rem;
+    color: #667eea;
+    opacity: 0.3;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    font-family: Georgia, serif;
+}
+
+#quote-author {
+    font-size: 1rem;
+    color: #764ba2;
+    font-weight: 600;
+    text-align: right;
+    font-style: normal;
+    margin-top: 10px;
+}
+
 @media (max-width: 768px) {
     .cards-container {
         grid-template-columns: 1fr;
+    }
+
+    #quote-text {
+        font-size: 1.1rem;
+    }
+
+    #quote-author {
+        font-size: 0.9rem;
     }
 }

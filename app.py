@@ -5,6 +5,7 @@ import os
 from authlib.integrations.flask_client import OAuth
 from functools import wraps
 import logging
+import random
 
 # Setup logging
 logging.basicConfig(level=logging.DEBUG)
@@ -184,6 +185,40 @@ def save_note(word_id):
         return jsonify({'success': True, 'message': 'Note saved successfully'})
     except Exception as e:
         logger.error(f'Error saving note: {str(e)}')
+        return jsonify({'error': str(e)}), 500
+
+# Famous quotes collection
+FAMOUS_QUOTES = [
+    {"text": "The only way to do great work is to love what you do.", "author": "Steve Jobs"},
+    {"text": "Success is not final, failure is not fatal: it is the courage to continue that counts.", "author": "Winston Churchill"},
+    {"text": "Believe you can and you're halfway there.", "author": "Theodore Roosevelt"},
+    {"text": "The future belongs to those who believe in the beauty of their dreams.", "author": "Eleanor Roosevelt"},
+    {"text": "It does not matter how slowly you go as long as you do not stop.", "author": "Confucius"},
+    {"text": "Education is the most powerful weapon which you can use to change the world.", "author": "Nelson Mandela"},
+    {"text": "The only impossible journey is the one you never begin.", "author": "Tony Robbins"},
+    {"text": "In the middle of difficulty lies opportunity.", "author": "Albert Einstein"},
+    {"text": "The best time to plant a tree was 20 years ago. The second best time is now.", "author": "Chinese Proverb"},
+    {"text": "You miss 100% of the shots you don't take.", "author": "Wayne Gretzky"},
+    {"text": "Whether you think you can or you think you can't, you're right.", "author": "Henry Ford"},
+    {"text": "The only person you are destined to become is the person you decide to be.", "author": "Ralph Waldo Emerson"},
+    {"text": "Don't watch the clock; do what it does. Keep going.", "author": "Sam Levenson"},
+    {"text": "Everything you've ever wanted is on the other side of fear.", "author": "George Addair"},
+    {"text": "Success is not how high you have climbed, but how you make a positive difference to the world.", "author": "Roy T. Bennett"},
+    {"text": "Learning never exhausts the mind.", "author": "Leonardo da Vinci"},
+    {"text": "The expert in anything was once a beginner.", "author": "Helen Hayes"},
+    {"text": "Don't let yesterday take up too much of today.", "author": "Will Rogers"},
+    {"text": "Life is 10% what happens to you and 90% how you react to it.", "author": "Charles R. Swindoll"},
+    {"text": "The way to get started is to quit talking and begin doing.", "author": "Walt Disney"}
+]
+
+@app.route('/api/quote', methods=['GET'])
+@login_required
+def get_quote():
+    try:
+        quote = random.choice(FAMOUS_QUOTES)
+        return jsonify(quote)
+    except Exception as e:
+        logger.error(f'Error fetching quote: {str(e)}')
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
