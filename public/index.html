@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiGo - English Word Memorization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="user-info" id="user-info">
+        <img id="user-avatar" src="" alt="" class="user-avatar">
+        <span id="user-name">Loading...</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+    
+    <div class="container">
+        <h1>LexiGo - Learn English Words</h1>
+        <div class="progress">
+            <span id="current-word">1</span> / <span id="total-words">0</span>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card" id="card-1">
+                <h2>English Word</h2>
+                <div class="card-content" id="word">Loading...</div>
+            </div>
+            
+            <div class="card" id="card-2">
+                <h2>Polish Translation</h2>
+                <div class="card-content" id="translation">Loading...</div>
+            </div>
+            
+            <div class="card" id="card-3">
+                <h2>Example Sentences</h2>
+                <div class="card-content" id="examples">
+                    <p id="example-1">Loading...</p>
+                    <p id="example-2">Loading...</p>
+                    <p id="example-3">Loading...</p>
+                </div>
+            </div>
+            
+            <div class="card" id="card-4">
+                <h2>My Notes</h2>
+                <div class="card-content notes-content">
+                    <textarea id="notes" placeholder="Add your personal notes about this word..."></textarea>
+                    <button id="save-note-btn" class="save-note-btn">Save Note</button>
+                    <span id="save-status" class="save-status"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button id="prev-btn" class="nav-btn">← Previous (Left Arrow)</button>
+            <button id="next-btn" class="nav-btn">Next (Right Arrow) →</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
