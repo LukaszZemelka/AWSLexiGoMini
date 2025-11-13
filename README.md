@@ -99,6 +99,19 @@ A web-based application for learning English vocabulary with Polish translations
 - `GET /api/notes/<word_id>` - Get note for word
 - `POST /api/notes/<word_id>` - Save note for word
 
+## Database Access
+
+To connect to the PostgreSQL database from your local pgAdmin 4 client, see the detailed guide:
+
+📖 **[DATABASE_ACCESS.md](DATABASE_ACCESS.md)** - Complete guide for connecting pgAdmin 4 to EC2 database
+
+Supports:
+- SSH tunneling (recommended)
+- Direct connection setup
+- Troubleshooting tips
+- Useful SQL queries
+
+
 ## Deployment
 
 See `GOOGLE_OAUTH_SETUP.md` for detailed deployment instructions on AWS EC2.
